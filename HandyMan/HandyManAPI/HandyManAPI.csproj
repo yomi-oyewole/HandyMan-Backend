@@ -166,13 +166,35 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IJobRepository.cs" />
+    <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Core\Repositories\IUserRepository.cs" />
+    <Compile Include="DataContext\HandyManContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906091657411_initialModel.cs" />
+    <Compile Include="Migrations\201906091657411_initialModel.Designer.cs">
+      <DependentUpon>201906091657411_initialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906091711257_user.cs" />
+    <Compile Include="Migrations\201906091711257_user.Designer.cs">
+      <DependentUpon>201906091711257_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906092301020_addedJobTables.cs" />
+    <Compile Include="Migrations\201906092301020_addedJobTables.Designer.cs">
+      <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Persistence\Repositories\JobRepository.cs" />
+    <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\UserRepository.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +279,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906091657411_initialModel.resx">
+      <DependentUpon>201906091657411_initialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906091711257_user.resx">
+      <DependentUpon>201906091711257_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906092301020_addedJobTables.resx">
+      <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
