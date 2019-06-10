@@ -55,9 +55,21 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.4.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.4.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.4.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.4.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -168,12 +180,16 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IJobRepository.cs" />
+    <Compile Include="Core\Repositories\ILoginRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="DataContext\HandyManContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AppSettings.cs" />
+    <Compile Include="Helper\Security\MembershipProvider.cs" />
+    <Compile Include="Helper\Security\TokenProvider.cs" />
     <Compile Include="Migrations\201906091657411_initialModel.cs" />
     <Compile Include="Migrations\201906091657411_initialModel.Designer.cs">
       <DependentUpon>201906091657411_initialModel.cs</DependentUpon>
@@ -186,12 +202,21 @@
     <Compile Include="Migrations\201906092301020_addedJobTables.Designer.cs">
       <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906101429413_RemovePasswordhashSalt.cs" />
+    <Compile Include="Migrations\201906101429413_RemovePasswordhashSalt.Designer.cs">
+      <DependentUpon>201906101429413_RemovePasswordhashSalt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906101430547_addPasswordhashSaltByte.cs" />
+    <Compile Include="Migrations\201906101430547_addPasswordhashSaltByte.Designer.cs">
+      <DependentUpon>201906101430547_addPasswordhashSaltByte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Persistence\Repositories\JobRepository.cs" />
+    <Compile Include="Persistence\Repositories\LoginRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
@@ -289,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906092301020_addedJobTables.resx">
       <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906101429413_RemovePasswordhashSalt.resx">
+      <DependentUpon>201906101429413_RemovePasswordhashSalt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906101430547_addPasswordhashSaltByte.resx">
+      <DependentUpon>201906101430547_addPasswordhashSaltByte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,11 +7,8 @@ using HandyManAPI.Models;
 
 namespace HandyManAPI.Core.Repositories
 {
-    public interface IUserRepository : IRepository<User>
+    public interface ILoginRepository : IRepository<Login>
     {
-       // IEnumerable<User> GetUser(int userId);
-
-       User Create(User user);
-       //void ChangePassword(User user);
+        User Authenticate(string email, string password);
     }
 }

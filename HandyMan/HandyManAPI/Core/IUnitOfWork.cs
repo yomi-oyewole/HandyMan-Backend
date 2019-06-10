@@ -11,5 +11,7 @@ namespace HandyManAPI.Core
     {
         IJobRepository Jobs { get; }
         IUserRepository Users { get; }
+
+        ILoginRepository Login { get; }
     }
 }

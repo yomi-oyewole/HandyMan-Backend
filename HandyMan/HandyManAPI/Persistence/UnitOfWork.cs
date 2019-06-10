@@ -16,11 +16,15 @@ namespace HandyManAPI.Persistence
         private readonly HandyManContext _context;
         public IJobRepository Jobs { get; }
         public IUserRepository Users { get; }
+        public ILoginRepository Login { get; }
+
         public UnitOfWork(HandyManContext context)
         {
             _context = context;
             Jobs = new JobRepository(context);
             Users = new UserRepository(context);
+            Login = new LoginRepository(context);
+           
         }
 
         public int Complete()
