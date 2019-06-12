@@ -18,5 +18,6 @@ namespace HandyManAPI.Core.Repositories
         void AddRange(IEnumerable<TEntity> entities);
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+        bool Any(Expression<Func<TEntity, bool>> predicate);
     }
 }

@@ -7,13 +7,13 @@ namespace HandyManAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initialModel : IMigrationMetadata
+    public sealed partial class addNewDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addNewDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906091657411_initialModel"; }
+            get { return "201906112230318_addNewDb"; }
         }
         
         string IMigrationMetadata.Source

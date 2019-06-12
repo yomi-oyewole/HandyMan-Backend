@@ -22,11 +22,6 @@ namespace HandyManAPI.Persistence.Repositories
 
         public User Create(User user)
         {
-            if(string.IsNullOrWhiteSpace(user.Password))
-                throw new ArgumentException("Password Required");
-            if(HmContext.Users.Any(x => x.Email == user.Email))
-                throw new ArgumentException($"Username: {user.Email} is already taken");
-
             byte[] passwordHash, passwordSalt;
             MembershipProvider.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
 
@@ -39,7 +34,7 @@ namespace HandyManAPI.Persistence.Repositories
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
                     Email = user.Email,
-                    
+
                 };
 
                 unitOfWork.Login.Add(loginModel);

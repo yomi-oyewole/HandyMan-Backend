@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +15,7 @@ namespace HandyManAPI.Models
         [Required]
         public string LastName { get; set; }
 
-        public DateTime DOB { get; set; }
+        //public DateTime DOB { get; set; }
         public string Address { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }
@@ -27,10 +28,13 @@ namespace HandyManAPI.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
+        
         public string ConfirmPassword { get; set; }
         public string PhoneNumber { get; set; }
-        public string UserId { get; set; }
+
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid UserId { get; set; }
         
         public virtual ICollection<Job> Jobs { get; set; }
     }

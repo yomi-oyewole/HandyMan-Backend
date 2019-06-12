@@ -20,7 +20,7 @@ namespace HandyManAPI.Helper.Security
             var loginRep = new LoginRepository(new HandyManContext());
             var authenticatedUser = loginRep.Authenticate(user.Email, user.Password);
 
-            if(authenticatedUser == null)
+            if (authenticatedUser == null)
                 throw new ArgumentException("Invalid User", "user");
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -29,7 +29,7 @@ namespace HandyManAPI.Helper.Security
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserId.ToString()), 
+                    new Claim(ClaimTypes.Name, user.UserId.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddDays(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -9,7 +9,7 @@ namespace HandyManAPI.Models
     public class Job
     {
         public User User { get; set; }
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public int Id { get; set; }
 

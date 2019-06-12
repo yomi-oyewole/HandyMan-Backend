@@ -7,13 +7,13 @@ namespace HandyManAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addPasswordhashSaltByte : IMigrationMetadata
+    public sealed partial class addAutogenerateID2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addPasswordhashSaltByte));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addAutogenerateID2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906101430547_addPasswordhashSaltByte"; }
+            get { return "201906112317259_addAutogenerateID2"; }
         }
         
         string IMigrationMetadata.Source

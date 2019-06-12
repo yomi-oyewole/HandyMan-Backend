@@ -34,6 +34,11 @@ namespace HandyManAPI.Persistence.Repositories
             return _entity.Where(predicate);
         }
 
+        public bool Any(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _entity.Any(predicate);
+        }
+
         public TEntity Get(int id)
         {
             return _entity.Find(id);

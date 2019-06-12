@@ -70,11 +70,17 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.4.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -177,6 +183,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IJobRepository.cs" />
@@ -190,25 +197,21 @@
     <Compile Include="Helper\AppSettings.cs" />
     <Compile Include="Helper\Security\MembershipProvider.cs" />
     <Compile Include="Helper\Security\TokenProvider.cs" />
-    <Compile Include="Migrations\201906091657411_initialModel.cs" />
-    <Compile Include="Migrations\201906091657411_initialModel.Designer.cs">
-      <DependentUpon>201906091657411_initialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201906112230318_addNewDb.cs" />
+    <Compile Include="Migrations\201906112230318_addNewDb.Designer.cs">
+      <DependentUpon>201906112230318_addNewDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906091711257_user.cs" />
-    <Compile Include="Migrations\201906091711257_user.Designer.cs">
-      <DependentUpon>201906091711257_user.cs</DependentUpon>
+    <Compile Include="Migrations\201906112310516_addAutogenerateID.cs" />
+    <Compile Include="Migrations\201906112310516_addAutogenerateID.Designer.cs">
+      <DependentUpon>201906112310516_addAutogenerateID.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906092301020_addedJobTables.cs" />
-    <Compile Include="Migrations\201906092301020_addedJobTables.Designer.cs">
-      <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
+    <Compile Include="Migrations\201906112314567_removeAutogenerateID.cs" />
+    <Compile Include="Migrations\201906112314567_removeAutogenerateID.Designer.cs">
+      <DependentUpon>201906112314567_removeAutogenerateID.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906101429413_RemovePasswordhashSalt.cs" />
-    <Compile Include="Migrations\201906101429413_RemovePasswordhashSalt.Designer.cs">
-      <DependentUpon>201906101429413_RemovePasswordhashSalt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906101430547_addPasswordhashSaltByte.cs" />
-    <Compile Include="Migrations\201906101430547_addPasswordhashSaltByte.Designer.cs">
-      <DependentUpon>201906101430547_addPasswordhashSaltByte.cs</DependentUpon>
+    <Compile Include="Migrations\201906112317259_addAutogenerateID2.cs" />
+    <Compile Include="Migrations\201906112317259_addAutogenerateID2.Designer.cs">
+      <DependentUpon>201906112317259_addAutogenerateID2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Job.cs" />
@@ -275,6 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -306,20 +310,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906091657411_initialModel.resx">
-      <DependentUpon>201906091657411_initialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906112230318_addNewDb.resx">
+      <DependentUpon>201906112230318_addNewDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906091711257_user.resx">
-      <DependentUpon>201906091711257_user.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906112310516_addAutogenerateID.resx">
+      <DependentUpon>201906112310516_addAutogenerateID.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906092301020_addedJobTables.resx">
-      <DependentUpon>201906092301020_addedJobTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906112314567_removeAutogenerateID.resx">
+      <DependentUpon>201906112314567_removeAutogenerateID.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906101429413_RemovePasswordhashSalt.resx">
-      <DependentUpon>201906101429413_RemovePasswordhashSalt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906101430547_addPasswordhashSaltByte.resx">
-      <DependentUpon>201906101430547_addPasswordhashSaltByte.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906112317259_addAutogenerateID2.resx">
+      <DependentUpon>201906112317259_addAutogenerateID2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

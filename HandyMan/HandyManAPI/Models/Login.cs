@@ -9,7 +9,7 @@ namespace HandyManAPI.Models
     public class Login
     {
         public User User { get; set; }
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }

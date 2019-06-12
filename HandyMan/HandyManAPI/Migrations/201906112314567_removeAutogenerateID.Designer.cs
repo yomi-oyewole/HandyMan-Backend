@@ -7,13 +7,13 @@ namespace HandyManAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RemovePasswordhashSalt : IMigrationMetadata
+    public sealed partial class removeAutogenerateID : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovePasswordhashSalt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removeAutogenerateID));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906101429413_RemovePasswordhashSalt"; }
+            get { return "201906112314567_removeAutogenerateID"; }
         }
         
         string IMigrationMetadata.Source

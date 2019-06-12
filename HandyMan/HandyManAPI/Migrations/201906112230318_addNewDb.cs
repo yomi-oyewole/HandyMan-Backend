@@ -3,7 +3,7 @@ namespace HandyManAPI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialModel : DbMigration
+    public partial class addNewDb : DbMigration
     {
         public override void Up()
         {
@@ -12,27 +12,29 @@ namespace HandyManAPI.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(maxLength: 128),
+                        UserId = c.Guid(nullable: false),
+                        Description = c.String(nullable: false),
+                        Title = c.String(nullable: false),
+                        Summary = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Users",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        DOB = c.DateTime(nullable: false),
+                        UserId = c.Guid(nullable: false , identity: true),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
                         Address = c.String(),
                         Address2 = c.String(),
                         City = c.String(),
                         State = c.String(),
                         Country = c.String(),
-                        Email = c.String(),
-                        Password = c.String(),
+                        Email = c.String(nullable: false),
+                        Password = c.String(nullable: false),
                         ConfirmPassword = c.String(),
                         PhoneNumber = c.String(),
                     })
@@ -43,14 +45,14 @@ namespace HandyManAPI.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Guid(nullable: false),
                         Email = c.String(),
-                        PasswordHash = c.String(),
-                        PasswordSalt = c.String(),
-                        UserId_UserId = c.String(maxLength: 128),
+                        PasswordHash = c.Binary(),
+                        PasswordSalt = c.Binary(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId_UserId)
-                .Index(t => t.UserId_UserId);
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Sessions",
@@ -58,21 +60,21 @@ namespace HandyManAPI.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Token = c.String(),
-                        UserId_UserId = c.String(maxLength: 128),
+                        UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId_UserId)
-                .Index(t => t.UserId_UserId);
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Sessions", "UserId_UserId", "dbo.Users");
-            DropForeignKey("dbo.Logins", "UserId_UserId", "dbo.Users");
+            DropForeignKey("dbo.Sessions", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Logins", "UserId", "dbo.Users");
             DropForeignKey("dbo.Jobs", "UserId", "dbo.Users");
-            DropIndex("dbo.Sessions", new[] { "UserId_UserId" });
-            DropIndex("dbo.Logins", new[] { "UserId_UserId" });
+            DropIndex("dbo.Sessions", new[] { "UserId" });
+            DropIndex("dbo.Logins", new[] { "UserId" });
             DropIndex("dbo.Jobs", new[] { "UserId" });
             DropTable("dbo.Sessions");
             DropTable("dbo.Logins");

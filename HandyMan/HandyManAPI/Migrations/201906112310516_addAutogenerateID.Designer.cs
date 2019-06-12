@@ -7,13 +7,13 @@ namespace HandyManAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedJobTables : IMigrationMetadata
+    public sealed partial class addAutogenerateID : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedJobTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addAutogenerateID));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906092301020_addedJobTables"; }
+            get { return "201906112310516_addAutogenerateID"; }
         }
         
         string IMigrationMetadata.Source
