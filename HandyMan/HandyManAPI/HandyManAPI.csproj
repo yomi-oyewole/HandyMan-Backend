@@ -183,12 +183,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IJobRepository.cs" />
     <Compile Include="Core\Repositories\ILoginRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Core\Repositories\ISessionRepository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="DataContext\HandyManContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +215,14 @@
     <Compile Include="Migrations\201906112317259_addAutogenerateID2.Designer.cs">
       <DependentUpon>201906112317259_addAutogenerateID2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906122242499_addedtokentoUser.cs" />
+    <Compile Include="Migrations\201906122242499_addedtokentoUser.Designer.cs">
+      <DependentUpon>201906122242499_addedtokentoUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906122318195_addedpasswordtoLogin.cs" />
+    <Compile Include="Migrations\201906122318195_addedpasswordtoLogin.Designer.cs">
+      <DependentUpon>201906122318195_addedpasswordtoLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Login.cs" />
@@ -221,6 +231,7 @@
     <Compile Include="Persistence\Repositories\JobRepository.cs" />
     <Compile Include="Persistence\Repositories\LoginRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\SessionRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -321,6 +332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906112317259_addAutogenerateID2.resx">
       <DependentUpon>201906112317259_addAutogenerateID2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906122242499_addedtokentoUser.resx">
+      <DependentUpon>201906122242499_addedtokentoUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906122318195_addedpasswordtoLogin.resx">
+      <DependentUpon>201906122318195_addedpasswordtoLogin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,6 +17,7 @@ namespace HandyManAPI.Persistence
         public IJobRepository Jobs { get; }
         public IUserRepository Users { get; }
         public ILoginRepository Login { get; }
+        public ISessionRepository Session { get; }
 
         public UnitOfWork(HandyManContext context)
         {
@@ -24,6 +25,7 @@ namespace HandyManAPI.Persistence
             Jobs = new JobRepository(context);
             Users = new UserRepository(context);
             Login = new LoginRepository(context);
+            Session = new SessionRepository(context);
            
         }
 

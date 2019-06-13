@@ -21,16 +21,13 @@ namespace HandyManAPI.Persistence.Repositories
 
         public User Authenticate(string email, string password)
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-                return null;
-
-            var loginContext = SingleOrDefault(x => x.Email == email);
+           var loginContext = SingleOrDefault(x => x.Email == email);
             if (loginContext == null)
                 return null;
 
             var user = HmContext.Users.Single(x => x.UserId.Equals(loginContext.UserId));
 
-            if (!MembershipProvider.VerifyPasswordHash(user.Password, loginContext.PasswordHash,
+            if (!MembershipProvider.VerifyPasswordHash(password, loginContext.PasswordHash,
                 loginContext.PasswordSalt))
                 return null;
 

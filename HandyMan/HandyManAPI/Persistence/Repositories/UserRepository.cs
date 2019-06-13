@@ -25,7 +25,7 @@ namespace HandyManAPI.Persistence.Repositories
             byte[] passwordHash, passwordSalt;
             MembershipProvider.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
 
-            using (var unitOfWork = new UnitOfWork(new HandyManContext()))
+            using (var unitOfWork = new UnitOfWork(HmContext))
             {
                 unitOfWork.Users.Add(user);
                 var loginModel = new Login

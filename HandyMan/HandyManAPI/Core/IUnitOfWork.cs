@@ -13,5 +13,7 @@ namespace HandyManAPI.Core
         IUserRepository Users { get; }
 
         ILoginRepository Login { get; }
+
+        ISessionRepository Session { get; }
     }
 }

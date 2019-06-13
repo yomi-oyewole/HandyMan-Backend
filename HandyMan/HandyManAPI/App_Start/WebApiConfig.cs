@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace HandyManAPI
 {
@@ -10,6 +12,12 @@ namespace HandyManAPI
     {
         public static void Register(HttpConfiguration config)
         {
+            //CamelCase settings
+            var settings = config.Formatters.JsonFormatter.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+            
+            
             // Web API configuration and services
             config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers:"*", methods:"*"));
 

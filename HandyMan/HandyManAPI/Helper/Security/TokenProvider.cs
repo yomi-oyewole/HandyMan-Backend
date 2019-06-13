@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using HandyManAPI.DataContext;
 using HandyManAPI.Models;
+using HandyManAPI.Persistence;
 using HandyManAPI.Persistence.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,8 +18,14 @@ namespace HandyManAPI.Helper.Security
 
         public static string GetToken(User user)
         {
-            var loginRep = new LoginRepository(new HandyManContext());
-            var authenticatedUser = loginRep.Authenticate(user.Email, user.Password);
+            User authenticatedUser;
+            using (var unitOfWork = new UnitOfWork(new HandyManContext()))
+            {
+                 authenticatedUser = unitOfWork.Login.Authenticate(user.Email, user.Password);
+                 unitOfWork.Dispose();
+            }
+            //var loginRep = new LoginRepository(new HandyManContext());
+            //var authenticatedUser = loginRep.Authenticate(user.Email, user.Password);
 
             if (authenticatedUser == null)
                 throw new ArgumentException("Invalid User", "user");

@@ -32,6 +32,8 @@ namespace HandyManAPI.Models
         public string ConfirmPassword { get; set; }
         public string PhoneNumber { get; set; }
 
+        public string Token { get; set; }
+
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
