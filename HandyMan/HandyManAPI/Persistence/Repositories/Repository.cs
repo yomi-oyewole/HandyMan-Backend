@@ -11,7 +11,7 @@ namespace HandyManAPI.Persistence.Repositories
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
-        private readonly DbSet<TEntity> _entity;
+        protected readonly DbSet<TEntity> _entity;
 
         public Repository(DbContext context)
         {
@@ -22,6 +22,7 @@ namespace HandyManAPI.Persistence.Repositories
         public void Add(TEntity entity)
         {
             _entity.Add(entity);
+            
         }
 
         public void AddRange(IEnumerable<TEntity> entities)

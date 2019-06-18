@@ -33,10 +33,11 @@ namespace HandyManAPI.Persistence.Repositories
                     UserId =user.UserId
                     
                 };
-
                 
-
                 unitOfWork.Session.Add(session);
+                var users = unitOfWork.Users.Get(session.UserId);
+                users.Token = session.Token;
+                unitOfWork.Update(users);
                 unitOfWork.Complete();
 
             }

@@ -12,6 +12,8 @@ namespace HandyManAPI.Core.Repositories
        // IEnumerable<User> GetUser(int userId);
 
        User Create(User user);
+
+       User Get(Guid id);
        //void ChangePassword(User user);
     }
 }

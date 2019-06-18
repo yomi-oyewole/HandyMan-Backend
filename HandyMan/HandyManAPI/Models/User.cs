@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace HandyManAPI.Models
 {
     public class User
     {
+
+        public User()
+        {
+            Jobs = new HashSet<Job>();
+        }
+
+
         [Required]
         public string FirstName { get; set; }
 
@@ -38,6 +46,6 @@ namespace HandyManAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
         
-        public virtual ICollection<Job> Jobs { get; set; }
+        public ICollection<Job> Jobs { get; set; }
     }
 }

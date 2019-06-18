@@ -43,11 +43,10 @@ namespace HandyManAPI.Controllers
                     
                 }
                 
-                
             }
             catch(Exception e)
             {
-                return Unauthorized();
+                return BadRequest();
             }
 
             return Ok(user);

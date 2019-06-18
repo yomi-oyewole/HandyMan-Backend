@@ -43,6 +43,11 @@ namespace HandyManAPI.Persistence.Repositories
 
             return user;
         }
-        
+
+        public User Get(Guid id)
+        {
+            return _entity.Find(id);
+        }
+
     }
 }

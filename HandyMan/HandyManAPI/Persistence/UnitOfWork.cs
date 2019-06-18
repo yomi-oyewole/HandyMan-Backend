@@ -39,5 +39,10 @@ namespace HandyManAPI.Persistence
         {
             _context.Dispose();
         }
+
+        public void Update<TEntity>(TEntity entity) where TEntity : class
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+        }
     }
 }
