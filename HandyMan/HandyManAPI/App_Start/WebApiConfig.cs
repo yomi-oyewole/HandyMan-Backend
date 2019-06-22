@@ -16,6 +16,8 @@ namespace HandyManAPI
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
+
+            
             
             
             // Web API configuration and services

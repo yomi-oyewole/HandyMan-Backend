@@ -24,6 +24,7 @@ namespace HandyManAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IHttpActionResult UserLogin(Login login)
         {
             User user;
@@ -51,6 +52,13 @@ namespace HandyManAPI.Controllers
 
             return Ok(user);
 
+        }
+
+        [HttpGet]
+        [JwtAuthentication]
+        public string Get()
+        {
+            return "Hello from Code-Adda.com";
         }
     }
 }

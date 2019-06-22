@@ -11,12 +11,19 @@ using HandyManAPI.Persistence;
 using HandyManAPI.Persistence.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
+
 namespace HandyManAPI.Helper.Security
 {
-    public class TokenProvider
+    public class TokenProvider 
     {
 
-        public static string GetToken(User user)
+        private readonly string _issuer = String.Empty;
+        private const string secretKey = "appsetting secret should be heere";
+        public TokenProvider(string issuer)
+        {
+            _issuer = issuer;
+        }
+        public static string GenerateJwtToken(User user)
         {
             User authenticatedUser;
             using (var unitOfWork = new UnitOfWork(new HandyManContext()))
@@ -31,14 +38,14 @@ namespace HandyManAPI.Helper.Security
                 throw new ArgumentException("Invalid User", "user");
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("appsetting secret should be heere");
+            var key = Encoding.ASCII.GetBytes(secretKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.UserId.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddDays(5),
+                Expires = DateTime.UtcNow.AddMinutes(5.0),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
 
             };
@@ -47,5 +54,38 @@ namespace HandyManAPI.Helper.Security
             var tokenString = tokenHandler.WriteToken(token);
             return tokenString;
         }
+
+        public static ClaimsPrincipal GetPrincipal(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+                if (jwtToken == null)
+                    return null;
+
+                //var symmetricKey = Convert.FromBase64String(secretKey);
+                var key = Encoding.ASCII.GetBytes(secretKey);
+                var validationParameters = new TokenValidationParameters
+                {
+                    RequireExpirationTime = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+
+                };
+
+                SecurityToken securityToken;
+                var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
+                return principal;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        
     }
 }

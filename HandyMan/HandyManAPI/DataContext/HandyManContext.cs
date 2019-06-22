@@ -18,8 +18,12 @@ namespace HandyManAPI.DataContext
         public HandyManContext() : base("name=HandyManConnection")
         {
                
-        }    
-
+        }
+        
+        public static HandyManContext Create()
+        {
+            return new HandyManContext();
+        }
 
     }
 }

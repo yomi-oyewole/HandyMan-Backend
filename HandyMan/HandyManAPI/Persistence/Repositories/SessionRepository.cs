@@ -22,7 +22,7 @@ namespace HandyManAPI.Persistence.Repositories
 
         public void CreateSession(User user)
         {
-            string token = TokenProvider.GetToken(user);
+            string token = TokenProvider.GenerateJwtToken(user);
             using (var unitOfWork = new UnitOfWork(HmContext))
             {
 
